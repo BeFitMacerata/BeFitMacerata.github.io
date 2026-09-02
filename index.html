@@ -143,6 +143,9 @@
       <p class="errore" id="errore-contatto">Lascia un numero o un'email per poterti avvisare.</p>
 
       <input type="hidden" name="entry.1734004818" value="Sì, acconsento">
+      <input type="hidden" name="fvv" value="1">
+      <input type="hidden" name="pageHistory" value="0">
+      <input type="hidden" name="fbzx" id="fbzx" value="">
 
       <div class="consenso">
         <input type="checkbox" id="consenso" required>
@@ -211,6 +214,10 @@
 (function(){
   var form = document.getElementById('lista');
   var esito = document.getElementById('esito');
+
+  document.getElementById('fbzx').value =
+    '-' + String(Math.floor(Math.random() * 9e18) + 1e18);
+
   var contatto = document.getElementById('contatto');
   var errore = document.getElementById('errore-contatto');
 
