@@ -3,117 +3,114 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Il nuovo studio — Giada Helou</title>
-<meta name="description" content="Dal nuovo anno uno spazio più grande a Macerata: allenamento su misura, hydrobike e nutrizione. Entra nella lista d'attesa.">
+<title>Il nuovo studio — BeFit Macerata</title>
+<meta name="description" content="A breve, a due passi da qui: uno spazio più grande a Macerata. Allenamento su misura, corsi in piccoli gruppi, hydrobike e nutrizione. Entra nella lista d'attesa.">
 <meta name="robots" content="index, follow">
 
 <!--
   ============================================================
-  DA CONFIGURARE — 3 cose, poi la pagina è pronta
+  MODULO GIÀ CONFIGURATO — collegato al modulo Google di Giada.
+  Le iscrizioni arrivano nel Foglio Google collegato a quel modulo.
+
+  L'informativa privacy è il file privacy.html, che va caricato
+  nella STESSA cartella di questa pagina. Prima di pubblicarla
+  vanno compilati i campi fra parentesi quadre che trovi lì dentro.
+
+  DOPO AVER CARICATO IL FILE SU GITHUB:
+  apri la pagina dal telefono, compila il form con il tuo nome e
+  controlla che la riga compaia nel Foglio Google. La pagina mostra
+  sempre il messaggio di conferma, quindi il Foglio è l'unica prova
+  che funziona davvero.
   ============================================================
-
-  1) FORM. Vai su https://web3forms.com (gratuito, senza account
-     obbligatorio): inserisci la tua email, ricevi una "access key",
-     e incollala qui sotto al posto di INCOLLA_QUI_LA_TUA_ACCESS_KEY.
-     Le iscrizioni ti arriveranno via email.
-     In alternativa Formspree: sostituisci l'attributo action del
-     <form> con l'URL che ti danno loro e cancella il campo hidden
-     access_key.
-
-  2) WHATSAPP. Cerca "39XXXXXXXXXX" più in basso e metti il tuo
-     numero professionale con prefisso, senza + e senza spazi.
-     Es: 393401234567
-
-  3) INFORMATIVA PRIVACY. Cerca "URL_INFORMATIVA" e metti il link
-     alla pagina privacy di giadahelou.it.
-
-  Poi carica il file sul tuo hosting come /nuovo-studio/index.html
-  e punta il QR su https://giadahelou.it/nuovo-studio
-  ============================================================
--->
+  -->
 
 <style>
   :root{
-    --pino:#1C332C;
-    --salvia:#5AA783;
-    --salvia-chiara:#E6F0EA;
-    --melograno:#B25062;
-    --carta:#F4F6F3;
-    --inchiostro:#2B3833;
-    --grigio:#6A7873;
+    --testata:#EEDFD8;
+    --alabastro:#F4F1EC;
+    --carta:#FBF9F6;
+    --pietra:#EAE5DC;
+    --linea:#E4DDD4;
+    --linea-calda:#DFC8C0;
+    --rosa:#8A585A;
+    --rosa-scuro:#6E4547;
+    --rosa-tenue:#F3E7E3;
+    --inchiostro:#382C28;
+    --testo:#33302C;
+    --grigio:#6F675F;
+    --titolo:Georgia,'Times New Roman',serif;
   }
   *{box-sizing:border-box;margin:0;padding:0}
   body{
     font-family:Arial,Helvetica,sans-serif;
-    background:var(--carta);
-    color:var(--inchiostro);
-    line-height:1.6;
+    background:var(--alabastro);
+    color:var(--testo);
+    line-height:1.65;
     -webkit-font-smoothing:antialiased;
   }
   .wrap{max-width:480px;margin:0 auto}
 
-  .hero{background:var(--pino);color:#fff;padding:38px 24px 32px}
-  .marchio{display:flex;align-items:center;gap:10px;margin-bottom:30px}
-  .seme{width:26px;height:26px;border-radius:50%;background:var(--melograno);flex:0 0 auto}
-  .marchio span{font-size:13px;color:#A9C4B7;letter-spacing:.5px}
-  .hero h1{font-size:38px;line-height:1.08;font-weight:700;letter-spacing:-1px;margin-bottom:16px}
-  .hero p{font-size:16px;color:#C6D8CF;max-width:30ch}
+  .hero{background:var(--testata);color:var(--inchiostro);padding:42px 26px 40px}
+  .marchio{font-size:15px;letter-spacing:1.2px;color:var(--rosa);padding-bottom:14px;border-bottom:1px solid var(--linea-calda);margin-bottom:34px}
+  .hero h1{font-family:var(--titolo);font-size:40px;line-height:1.06;font-weight:400;letter-spacing:-.5px;margin-bottom:18px}
+  .hero p{font-size:16px;color:#6B5A53;max-width:32ch}
 
-  .box{background:#fff;padding:26px 24px;border-bottom:1px solid #E2E8E4}
-  .box h2{font-size:20px;font-weight:700;margin-bottom:6px;letter-spacing:-.3px}
-  .box .occhiello{font-size:14px;color:var(--grigio);margin-bottom:20px}
+  .box{background:var(--carta);padding:30px 26px;border-bottom:1px solid var(--linea)}
+  .box h2{font-family:var(--titolo);font-size:24px;font-weight:400;letter-spacing:-.2px;margin-bottom:8px}
+  .box .occhiello{font-size:14px;color:var(--grigio);margin-bottom:24px}
 
-  label{display:block;font-size:14px;font-weight:700;margin-bottom:6px}
+  label{display:block;font-size:14px;font-weight:700;margin-bottom:7px}
   .aiuto{font-weight:400;color:var(--grigio);font-size:13px}
-  input[type=text],input[type=email]{
+  input[type=text]{
     width:100%;height:52px;padding:0 14px;font-size:16px;font-family:inherit;
-    border:1.5px solid #CBD6D0;border-radius:6px;background:#fff;color:var(--inchiostro);
-    margin-bottom:18px;
+    border:1px solid #D8CFC5;border-radius:3px;background:#fff;color:var(--testo);
+    margin-bottom:20px;
   }
-  input:focus-visible{outline:3px solid var(--salvia);outline-offset:1px;border-color:var(--salvia)}
+  input[type=text]:focus-visible{outline:2px solid var(--rosa);outline-offset:1px;border-color:var(--rosa)}
 
-  .consenso{display:flex;gap:11px;align-items:flex-start;margin-bottom:22px}
-  .consenso input{width:22px;height:22px;flex:0 0 auto;margin-top:2px;accent-color:var(--salvia)}
+  .consenso{display:flex;gap:11px;align-items:flex-start;margin-bottom:24px}
+  .consenso input{width:22px;height:22px;flex:0 0 auto;margin-top:2px;accent-color:var(--rosa)}
   .consenso label{font-size:13px;font-weight:400;line-height:1.5;color:var(--grigio)}
-  .consenso a{color:var(--salvia);text-decoration:underline}
+  .consenso a{color:var(--rosa);text-decoration:underline}
 
   button{
-    width:100%;height:56px;font-size:17px;font-weight:700;font-family:inherit;
-    background:var(--melograno);color:#fff;border:0;border-radius:6px;cursor:pointer;
+    width:100%;height:56px;font-size:16px;font-weight:700;font-family:inherit;
+    letter-spacing:.3px;background:var(--rosa);color:#fff;border:0;border-radius:3px;cursor:pointer;
   }
-  button:hover{background:#9C4354}
-  button:focus-visible{outline:3px solid var(--pino);outline-offset:2px}
+  button:hover{background:var(--rosa-scuro)}
+  button:focus-visible{outline:2px solid var(--inchiostro);outline-offset:2px}
 
-  .oppure{text-align:center;font-size:13px;color:var(--grigio);margin:18px 0 12px}
+  .oppure{text-align:center;font-size:13px;color:var(--grigio);margin:20px 0 14px}
   .whatsapp{
     display:block;text-align:center;text-decoration:none;
     height:52px;line-height:50px;font-size:16px;font-weight:700;
-    color:var(--pino);border:1.5px solid var(--pino);border-radius:6px;
+    color:var(--inchiostro);border:1px solid var(--inchiostro);border-radius:3px;
   }
-  .whatsapp:hover{background:var(--salvia-chiara)}
+  .whatsapp:hover{background:var(--rosa-tenue)}
 
-  .esito{display:none;background:var(--salvia-chiara);border-left:4px solid var(--salvia);padding:18px 20px;font-size:15px}
+  .esito{display:none;background:var(--rosa-tenue);border-left:3px solid var(--rosa);padding:20px 22px;font-size:15px}
   .esito.visibile{display:block}
-  .errore{color:var(--melograno);font-size:14px;margin:-10px 0 16px;display:none}
+  .errore{color:var(--rosa);font-size:14px;margin:-12px 0 18px;display:none}
   .errore.visibile{display:block}
 
-  .pilastro{display:flex;gap:14px;padding:16px 0;border-top:1px solid #E2E8E4}
-  .pilastro:first-of-type{border-top:0}
-  .punto{width:9px;height:9px;border-radius:50%;background:var(--salvia);flex:0 0 auto;margin-top:8px}
-  .pilastro h3{font-size:16px;font-weight:700;margin-bottom:1px}
-  .pilastro p{font-size:14px;color:var(--grigio)}
+  .voce{display:flex;gap:14px;align-items:flex-start;padding:18px 0;border-top:1px solid var(--linea)}
+  .voce:first-of-type{border-top:0;padding-top:0}
+  .punto{width:9px;height:9px;border-radius:50%;background:var(--rosa);flex:0 0 auto;margin-top:9px}
+  .voce h3{font-family:var(--titolo);font-size:18px;font-weight:400;margin-bottom:3px}
+  .voce p{font-size:14px;color:var(--grigio);line-height:1.55}
 
   .vantaggi{list-style:none}
-  .vantaggi li{padding:11px 0 11px 26px;position:relative;font-size:15px;border-bottom:1px solid #E2E8E4}
-  .vantaggi li:last-child{border-bottom:0}
-  .vantaggi li::before{content:"";position:absolute;left:4px;top:20px;width:8px;height:8px;border-radius:50%;background:var(--melograno)}
+  .vantaggi li{padding:13px 0 13px 24px;position:relative;font-size:15px;border-top:1px solid var(--linea)}
+  .vantaggi li:first-child{border-top:0;padding-top:0}
+  .vantaggi li::before{content:"";position:absolute;left:2px;top:22px;width:7px;height:7px;border-radius:50%;background:var(--rosa)}
+  .vantaggi li:first-child::before{top:9px}
 
-  .oggi{background:var(--salvia-chiara);padding:26px 24px}
-  .oggi h2{font-size:18px;font-weight:700;margin-bottom:10px}
-  .oggi p{font-size:15px;color:#3E4F49}
+  .oggi{background:var(--pietra);padding:30px 26px}
+  .oggi h2{font-family:var(--titolo);font-size:20px;font-weight:400;margin-bottom:12px}
+  .oggi p{font-size:15px;color:#4A443C}
 
-  footer{padding:28px 24px 40px;text-align:center;font-size:13px;color:var(--grigio);line-height:2}
-  footer a{color:var(--salvia);text-decoration:none;font-weight:700}
+  footer{padding:32px 26px 44px;text-align:center;font-size:14px;color:var(--grigio);line-height:1.9}
+  footer a{color:var(--rosa);text-decoration:none;font-weight:700;white-space:nowrap}
 
   @media (prefers-reduced-motion:no-preference){
     button,.whatsapp{transition:background .15s ease}
@@ -124,65 +121,75 @@
 <div class="wrap">
 
   <header class="hero">
-    <div class="marchio"><div class="seme"></div><span>Giada Helou · Macerata</span></div>
+    <div class="marchio">BeFit Macerata</div>
     <h1>Ci stiamo allargando</h1>
-    <p>Dal nuovo anno uno spazio più grande, a pochi passi da qui.</p>
+    <p>A breve, a due passi da qui. Uno spazio più grande per allenarti e prenderti cura di te.</p>
   </header>
 
   <section class="box">
     <h2>Entra nella lista d'attesa</h2>
-    <p class="occhiello">Prezzo di preapertura riservato alle prime 30 iscritte. Ti scriviamo solo quando c'è una data.</p>
+    <p class="occhiello">Offerta di preapertura riservata alle prime 30 iscritte.</p>
 
-    <form id="lista" action="https://api.web3forms.com/submit" method="POST">
-      <input type="hidden" name="access_key" value="INCOLLA_QUI_LA_TUA_ACCESS_KEY">
-      <input type="hidden" name="subject" value="Nuova iscrizione lista d'attesa nuovo studio">
-      <input type="hidden" name="from_name" value="Lista d'attesa nuovo studio">
+    <iframe name="invio-nascosto" title="invio modulo" style="display:none" aria-hidden="true"></iframe>
+
+    <form id="lista" method="POST" target="invio-nascosto"
+          action="https://docs.google.com/forms/d/e/1FAIpQLSeEWVqIGIzJCUUmb4Hn8Z1W-yDEsTRI6M0WQXO8wWyBeSs9hg/formResponse">
 
       <label for="nome">Nome</label>
-      <input type="text" id="nome" name="nome" autocomplete="given-name" required>
+      <input type="text" id="nome" name="entry.61073750" autocomplete="given-name" required>
 
       <label for="contatto">Come ti ricontattiamo <span class="aiuto">— telefono o email, come preferisci</span></label>
-      <input type="text" id="contatto" name="contatto" autocomplete="tel" required>
+      <input type="text" id="contatto" name="entry.1116895925" autocomplete="tel" required>
       <p class="errore" id="errore-contatto">Lascia un numero o un'email per poterti avvisare.</p>
 
+      <input type="hidden" name="entry.1734004818" value="Sì, acconsento">
+
       <div class="consenso">
-        <input type="checkbox" id="consenso" name="consenso" value="si" required>
-        <label for="consenso">Acconsento a essere ricontattata per informazioni sull'apertura del nuovo studio. Ho letto l'<a href="URL_INFORMATIVA">informativa privacy</a>.</label>
+        <input type="checkbox" id="consenso" required>
+        <label for="consenso">Acconsento a essere ricontattata per informazioni sull'apertura del nuovo studio. Ho letto l'<a href="privacy.html">informativa privacy</a>.</label>
       </div>
 
       <button type="submit">Entra in lista d'attesa</button>
     </form>
 
     <div class="esito" id="esito" role="status">
-      <strong>Ci sei.</strong><br>Ti avvisiamo appena abbiamo una data. Nel frattempo ci trovi in studio in Corso Cairoli 40.
+      <strong>Ci sei.</strong><br>Ti avvisiamo appena abbiamo una data, prima che apriamo le prenotazioni.
     </div>
 
     <p class="oppure">oppure, se preferisci</p>
-    <a class="whatsapp" href="https://wa.me/39XXXXXXXXXX?text=Ciao%2C%20vorrei%20entrare%20nella%20lista%20d%27attesa%20del%20nuovo%20studio">Scrivici su WhatsApp</a>
+    <a class="whatsapp" href="https://wa.me/393281282820?text=Ciao%2C%20vorrei%20entrare%20nella%20lista%20d%27attesa%20del%20nuovo%20studio">Scrivici su WhatsApp</a>
   </section>
 
   <section class="box">
     <h2>Cosa troverai</h2>
-    <p class="occhiello">Tre cose sotto lo stesso tetto, senza doverti spostare.</p>
+    <p class="occhiello">Percorsi integrati nella stessa struttura, senza doverti spostare.</p>
 
-    <div class="pilastro">
+    <div class="voce">
       <div class="punto"></div>
       <div><h3>Allenamento su misura</h3><p>Personal trainer ed elettrostimolazione EMS</p></div>
     </div>
-    <div class="pilastro">
+    <div class="voce">
       <div class="punto"></div>
-      <div><h3>Movimento in acqua</h3><p>Hydrobike, a basso impatto sulle articolazioni</p></div>
+      <div><h3>Corsi in piccoli gruppi</h3><p>Per seguirti al meglio</p></div>
     </div>
-    <div class="pilastro">
+    <div class="voce">
       <div class="punto"></div>
-      <div><h3>Nutrizione</h3><p>Percorsi seguiti da una biologa nutrizionista</p></div>
+      <div><h3>Hydrobike</h3><p>Movimento in acqua nella riservatezza della tua cabina</p></div>
+    </div>
+    <div class="voce">
+      <div class="punto"></div>
+      <div><h3>Nutrizione personalizzata</h3><p>Percorsi seguiti da una biologa nutrizionista per ottimizzare i tuoi risultati</p></div>
+    </div>
+    <div class="voce">
+      <div class="punto"></div>
+      <div><h3>Percorsi mirati per le donne</h3><p>Accanto a te in ogni fase della vita</p></div>
     </div>
   </section>
 
   <section class="box">
     <h2>Chi si iscrive ora</h2>
     <ul class="vantaggi">
-      <li>Blocca il prezzo di preapertura sul primo abbonamento</li>
+      <li>Blocca l'offerta di preapertura sul primo abbonamento</li>
       <li>Sceglie per prima gli orari quando aprono le prenotazioni</li>
       <li>È invitata alla giornata di prova prima dell'apertura</li>
     </ul>
@@ -190,13 +197,12 @@
 
   <section class="oggi">
     <h2>Intanto siamo già qui</h2>
-    <p>Lo studio in Corso Cairoli 40 è aperto: allenamenti con personal trainer, EMS e consulenze nutrizionali. Il nuovo spazio nasce da qui, più grande.</p>
+    <p>Lo studio di Corso Cairoli, 40, è aperto nel frattempo: puoi già effettuare allenamenti con personal trainer, EMS e consulenze nutrizionali. Il nuovo spazio nascerà da qui, più grande.</p>
   </section>
 
   <footer>
-    Corso Cairoli 40, presso Be Fit — Macerata<br>
-    <a href="https://instagram.com/nutrizionistagiada">@nutrizionistagiada</a><br>
-    <a href="https://giadahelou.it">giadahelou.it</a>
+    Seguici sulle nostre pagine social<br>per tutti gli aggiornamenti<br>
+    <a href="https://instagram.com/befit_macerata">@befit_macerata</a> e <a href="https://instagram.com/nutrizionistagiada">@nutrizionistagiada</a>
   </footer>
 
 </div>
@@ -221,18 +227,10 @@
       contatto.focus();
       return;
     }
-
-    e.preventDefault();
-    var dati = new FormData(form);
-    fetch(form.action, {method:'POST', body:dati})
-      .then(function(r){ return r.json(); })
-      .then(function(){
-        form.style.display = 'none';
-        esito.classList.add('visibile');
-      })
-      .catch(function(){
-        form.submit();
-      });
+    setTimeout(function(){
+      form.style.display = 'none';
+      esito.classList.add('visibile');
+    }, 400);
   });
 })();
 </script>
