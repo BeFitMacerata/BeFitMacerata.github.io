@@ -9,18 +9,14 @@
 
 <!--
   ============================================================
-  MODULO GIÀ CONFIGURATO — collegato al modulo Google di Giada.
+  MODULO GIÀ CONFIGURATO — collegato al modulo Google.
   Le iscrizioni arrivano nel Foglio Google collegato a quel modulo.
 
   L'informativa privacy è il file privacy.html, che va caricato
-  nella STESSA cartella di questa pagina. Prima di pubblicarla
-  vanno compilati i campi fra parentesi quadre che trovi lì dentro.
+  nella STESSA cartella di questa pagina.
 
-  DOPO AVER CARICATO IL FILE SU GITHUB:
-  apri la pagina dal telefono, compila il form con il tuo nome e
-  controlla che la riga compaia nel Foglio Google. La pagina mostra
-  sempre il messaggio di conferma, quindi il Foglio è l'unica prova
-  che funziona davvero.
+  CONTEGGIO VISITE: in fondo al file c'è lo script di Umami,
+  già configurato con il codice del sito. Nulla da modificare.
   ============================================================
   -->
 
@@ -116,15 +112,6 @@
     button,.whatsapp{transition:background .15s ease}
   }
 </style>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-0ZDT7SZY8D"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-0ZDT7SZY8D');
-</script>
 </head>
 <body>
 <div class="wrap">
@@ -178,7 +165,7 @@
 
     <div class="voce">
       <div class="punto"></div>
-      <div><h3>Allenamento su misura</h3><p>Personal trainer, EMS e recupero funzionale </p></div>
+      <div><h3>Allenamento su misura</h3><p>Personal trainer, EMS e recupero funzionale</p></div>
     </div>
     <div class="voce">
       <div class="punto"></div>
@@ -250,5 +237,9 @@
   });
 })();
 </script>
+
+<!-- Conteggio visite: Umami — gratuito, senza cookie, nessun banner.
+     Codice del sito già inserito, non serve modificare nulla. -->
+<script defer src="https://cloud.umami.is/script.js" data-website-id="57da7b60-4c65-437a-8588-4b7d4af6b3ce"></script>
 </body>
 </html>
