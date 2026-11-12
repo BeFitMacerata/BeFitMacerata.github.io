@@ -24,8 +24,9 @@
      una riga nell'informativa (vedi la chat).
 
   4. Conteggio visite: Umami, come prima, stesso codice del sito.
-     I pulsanti con data-umami-event contano i clic: in Umami
-     li trovate nella sezione Eventi (iscrizione, whatsapp, instagram).
+     In Umami, sezione Eventi: "iscrizione" conta solo gli invii
+     riusciti (con il cartellone di provenienza); gli altri pulsanti
+     con data-umami-event contano i clic su WhatsApp e Instagram.
   ============================================================
 -->
 
@@ -168,9 +169,7 @@
       <p class="occhiello">Lasciaci il tuo contatto: ti richiamiamo per tenerti il posto.</p>
     </div>
 
-    <iframe name="invio-nascosto" title="invio modulo" style="display:none" aria-hidden="true"></iframe>
-
-    <form id="lista" method="POST" target="invio-nascosto"
+    <form id="lista" method="POST"
           action="https://docs.google.com/forms/d/e/1FAIpQLSeEWVqIGIzJCUUmb4Hn8Z1W-yDEsTRI6M0WQXO8wWyBeSs9hg/formResponse">
 
       <label for="nome">Nome</label>
@@ -181,16 +180,14 @@
       <p class="errore" id="errore-contatto" hidden>Lascia un numero o un'email per poterti avvisare.</p>
 
       <input type="hidden" name="entry.1734004818" value="Sì, acconsento">
-      <input type="hidden" name="fvv" value="1">
-      <input type="hidden" name="pageHistory" value="0">
-      <input type="hidden" name="fbzx" id="fbzx" value="">
 
       <div class="consenso">
         <input type="checkbox" id="consenso" required>
         <label for="consenso">Acconsento a essere ricontattato per informazioni sull'apertura del nuovo studio. Ho letto l'<a href="privacy.html">informativa privacy</a>.</label>
       </div>
 
-      <button type="submit" data-umami-event="iscrizione">Voglio essere ricontattato</button>
+      <button type="submit" id="invia">Voglio essere ricontattato</button>
+      <p class="errore" id="errore-invio" hidden style="margin:14px 0 0">Non siamo riusciti a inviare. Controlla la connessione e riprova, oppure scrivici su WhatsApp.</p>
     </form>
 
     <div class="esito" id="esito" role="status" hidden>
@@ -208,7 +205,7 @@
     <ul class="vantaggi">
       <li><b>Prezzo bloccato</b> per un anno</li>
       <li><b>Scelta prioritaria </b> degli orari, prima dell'apertura al pubblico</li>
-      <li><b> Test di forma ogni 3 mesi </b> per monitorare i tuoi progressi</li>
+      <li><b>Monitoraggio dei progressi</b> ogni 3 mesi</li>
       <li><b>Prova gratuita</b> prima dell’inaugurazione</li>
     </ul>
 
@@ -337,29 +334,46 @@ var IMPOSTAZIONI = {
     a.href = 'https://wa.me/' + IMPOSTAZIONI.whatsapp + '?text=' + encodeURIComponent(a.getAttribute('data-wa') + firma);
   });
 
-  // Modulo: stesso funzionamento di prima
+  // Modulo: invia i dati direttamente al modulo Google
   var form = document.getElementById('lista');
   var esito = document.getElementById('esito');
+  var nome = document.getElementById('nome');
   var contatto = document.getElementById('contatto');
   var errore = document.getElementById('errore-contatto');
-
-  document.getElementById('fbzx').value = '-' + String(Math.floor(Math.random() * 9e18) + 1e18);
+  var erroreInvio = document.getElementById('errore-invio');
+  var pulsante = document.getElementById('invia');
 
   contatto.addEventListener('input', function(){ errore.hidden = true; });
 
   form.addEventListener('submit', function(e){
+    e.preventDefault();
+    erroreInvio.hidden = true;
     var v = contatto.value.trim();
     var valido = v.indexOf('@') > 0 || v.replace(/\D/g,'').length >= 8;
     if (!valido) {
-      e.preventDefault();
       errore.hidden = false;
       contatto.focus();
       return;
     }
-    setTimeout(function(){
-      form.hidden = true;
-      esito.hidden = false;
-    }, 400);
+    var dati = new URLSearchParams();
+    dati.append('entry.61073750', nome.value.trim());
+    dati.append('entry.1116895925', v);
+    dati.append('entry.1734004818', 'Sì, acconsento');
+
+    pulsante.disabled = true;
+    pulsante.textContent = 'Invio in corso…';
+
+    fetch(form.action, { method: 'POST', mode: 'no-cors', body: dati })
+      .then(function(){
+        form.hidden = true;
+        esito.hidden = false;
+        if (window.umami) { umami.track('iscrizione', { cartellone: cartellone || 'diretto' }); }
+      })
+      .catch(function(){
+        pulsante.disabled = false;
+        pulsante.textContent = 'Voglio essere ricontattato';
+        erroreInvio.hidden = false;
+      });
   });
 })();
 </script>
