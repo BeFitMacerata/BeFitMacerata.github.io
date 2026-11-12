@@ -24,6 +24,8 @@
      una riga nell'informativa (vedi la chat).
 
   4. Conteggio visite: Umami, come prima, stesso codice del sito.
+     I pulsanti con data-umami-event contano i clic: in Umami
+     li trovate nella sezione Eventi (iscrizione, whatsapp, instagram).
   ============================================================
 -->
 
@@ -109,6 +111,9 @@
   .voce p{font-size:15px;font-weight:300;color:var(--grigio);line-height:1.5}
 
   .domanda{padding:34px 26px;border-bottom:1px solid var(--linea);scroll-margin-top:12px}
+  .domanda.chiara{background:var(--sabbia)}
+  .domanda.chiara p,.domanda.chiara .passi span,.domanda.chiara .avviso{color:var(--inchiostro)}
+  .domanda.chiara .avviso{border-top-color:var(--rovere)}
   .domanda.scura{background:var(--oliva-scuro);color:var(--crema)}
   .domanda.vino{background:var(--vinaccia);color:var(--crema)}
   .domanda .q{font-family:var(--titolo);font-size:56px;font-weight:600;line-height:.6;height:26px;color:var(--vinaccia)}
@@ -123,7 +128,10 @@
   .passi span{font-size:15px;font-weight:300;color:var(--grigio)}
   .avviso{margin-top:14px;font-size:13px;font-weight:300;color:var(--grigio);border-top:1px solid var(--linea);padding-top:12px}
 
-  .oggi{background:var(--sabbia);padding:30px 26px}
+  .oggi{background:var(--crema);padding:30px 26px}
+  .instagram{display:block;text-align:center;text-decoration:none;height:52px;line-height:50px;font-size:16px;font-weight:500;color:var(--crema);background:var(--oliva-scuro);border-radius:3px;margin-top:12px}
+  .instagram:hover{background:var(--inchiostro)}
+  .instagram:focus-visible{outline:2px solid var(--vinaccia);outline-offset:2px}
   .oggi h2{font-family:var(--titolo);font-weight:500;font-size:26px;margin-bottom:10px}
   .oggi p{font-size:15px;font-weight:300}
 
@@ -182,7 +190,7 @@
         <label for="consenso">Acconsento a essere ricontattato per informazioni sull'apertura del nuovo studio. Ho letto l'<a href="privacy.html">informativa privacy</a>.</label>
       </div>
 
-      <button type="submit">Clicca per essere ricontattato</button>
+      <button type="submit" data-umami-event="iscrizione">Voglio essere ricontattato</button>
     </form>
 
     <div class="esito" id="esito" role="status" hidden>
@@ -190,7 +198,8 @@
     </div>
 
     <p class="oppure">oppure, se preferisci</p>
-    <a class="whatsapp" data-wa="Ciao, vorrei un posto nel nuovo Be Fit" href="https://wa.me/393281282820">Scrivici su WhatsApp</a>
+    <a class="whatsapp" data-wa="Ciao, vorrei un posto nel nuovo Be Fit" data-umami-event="whatsapp-lista" href="https://wa.me/393281282820">Scrivici su WhatsApp</a>
+    <a class="instagram" data-umami-event="instagram" href="https://www.instagram.com/befit_macerata/">Segui il cantiere su Instagram</a>
   </section>
 
   <!-- VANTAGGI FONDATORI: sempre visibili -->
@@ -226,54 +235,53 @@
       <tr><td><span class="nome">Buono a valore</span><span class="cosa">Si spende su EMS, hydrobike e corsi</span></td><td><span class="euro">50–150 €</span></td></tr>
     </table>
     <p class="nota">Ordini entro il 22 dicembre, su WhatsApp o in Corso Cairoli 40.</p>
-    <p style="margin-top:16px"><a class="whatsapp" data-wa="Ciao, vorrei un buono regalo Be Fit" href="https://wa.me/393281282820">Ordina un buono su WhatsApp</a></p>
+    <p style="margin-top:16px"><a class="whatsapp" data-wa="Ciao, vorrei un buono regalo Be Fit" data-umami-event="whatsapp-buoni" href="https://wa.me/393281282820">Ordina un buono su WhatsApp</a></p>
   </section>
 
   <section class="box">
     <h2>Cosa troverai</h2>
     <p class="occhiello">Tutto nello stesso studio, in un ambiente riservato.</p>
     <div class="voce"><div class="punto"></div><div><h3>Allenamento one to one con personal trainer</h3><p>20 minuti con l'EMS, allenamenti tradizionali e recupero funzionale. Tu e il tuo trainer, nessuna folla.</p></div></div>
-    <div class="voce"><div class="punto"></div><div><h3>Hydrobike con idromassaggio</h3><p>I vantaggi delle bicicletta in acqua, in una cabina tutta per te.</p></div></div>
+    <div class="voce"><div class="punto"></div><div><h3>Hydrobike con idromassaggio</h3><p>I vantaggi della bicicletta in acqua, in una cabina tutta per te.</p></div></div>
     <div class="voce"><div class="punto"></div><div><h3>Piccoli gruppi</h3><p>Pilates, hatha yoga, allenamento funzionale e per la terza età.</p></div></div>
-<div class="voce"><div class="punto"></div><div><h3>Percorso donna con l’ostetrica </h3><p>Gravidanza in movimento, massaggio infantile, yoga in fascia, menopausa in movimento e consulenze. </p></div></div>
+<div class="voce"><div class="punto"></div><div><h3>Percorso donna con l’ostetrica </h3><p>Gravidanza in movimento, massaggio infantile, yoga in fascia, menopausa in movimento, pavimento pelvico e consulenze. </p></div></div>
     <div class="voce"><div class="punto"></div><div><h3>Nutrizione personalizzata</h3><p>Con una biologa nutrizionista ad accompagnarti nel tuo percorso.</p></div></div>
   </section>
 
   <!-- RISPOSTE ALLE DOMANDE DEI CARTELLONI D1, D2, D3 -->
-  <section class="domanda" id="ems">
+  <section class="domanda chiara" id="ems">
     <div class="q" aria-hidden="true">?</div>
     <h2>Allenare tutto il corpo in 20 minuti?</h2>
     <p>Sì, con l'EMS puoi. Risparmia tempo allenandoti intensamente, grazie a una tuta che aiuta i muscoli a lavorare di più, con un personal trainer solo per te.</p>
     <ol class="passi">
-      <li><div><b>Indossi la tuta</b><span> Gli elettrodi amplificano la contrazione muscolare con impulsi leggeri, mentre ti alleni.</span></div></li>
+      <li><div><b>Indossi la tuta</b><span> Gli elettrodi amplificano la contrazione muscolare con impulsi, mentre ti alleni.</span></div></li>
       <li><div><b>Il trainer ti segue in tutto</b><span> Indica gli esercizi e sceglie intensità zona per zona e tipo di impulso in base agli obiettivi.</span></div></li>
-      <li><div><b>Ti alleni 20 minuti</b><span>Esercizi mirati, una persona alla volta, una o due volte a settimana.</span></div></li>
+      <li><div><b>Ti alleni in 20 minuti</b><span> Esercizi mirati, una persona alla volta, una o due volte a settimana.</span></div></li>
     </ol>
     <p class="avviso">Prima di iniziare facciamo un colloquio: in gravidanza, con pacemaker e in alcune altre condizioni l'EMS non si usa.</p>
   </section>
 
   <section class="domanda scura" id="hydrobike">
     <div class="q" aria-hidden="true">?</div>
-    <h2>Hai mai pedalato nell'acqua?</h2>
-    <p>Con l'hydrobike sì: è una bici dentro una vasca con idromassaggio, in una cabina privata. L'acqua sostiene il peso del corpo, quindi è leggera per le articolazioni. Si usa da sola o insieme all'allenamento.</p>
+    <h2>Hai mai pedalato in acqua?</h2>
+    <p>Con l’hydrobike combini la pedalata all’idromassaggio, in una cabina privata. Offre numerosi benefici: azione drenante, benessere circolatorio, gambe leggere, aumento del dispendio energetico, recupero e rilassamento muscolare, il tutto a basso impatto sulle articolazioni.</p>
   </section>
 
   <section class="domanda vino" id="donna">
-    <div class="q" aria-hidden="true">?</div>
-    <h2>Un posto che ti segue in ogni fase della vita?</h2>
-    <p>Allenamento su misura, una nutrizionista e i corsi con un'ostetrica per la gravidanza e il dopo parto, in piccoli gruppi. Nello stesso studio, senza spostarti.</p>
+    <h2>Accanto a te in ogni capitolo della tua storia.</h2>
+    <p>Il tuo corpo merita attenzione, a ogni età: tecnologia, movimento, acqua, discipline olistiche e nutrizione. Tante possibilità, un unico obiettivo: prendersi cura di sé.</p>
   </section>
 
   <section class="oggi">
     <h2>Intanto siamo già qui</h2>
-    <p>Fino al trasloco lo studio di Corso Cairoli 40 resta aperto: puoi già allenarti con il personal trainer, con o senza EMS.</p>
+    <p>Fino al trasloco lo studio di Corso Cairoli 40 resta aperto: puoi già allenarti con il personal trainer, e seguire un percorso di alimentazione personalizzata.</p>
   </section>
 
   <footer>
     <div class="barre" aria-hidden="true"><span></span><span></span><span></span></div>
     Seguici per vedere come sta nascendo<br>
-    <a href="https://instagram.com/befit_macerata">@befit_macerata</a><br>
-    WhatsApp <a data-wa="Ciao, vorrei informazioni sul nuovo Be Fit" href="https://wa.me/393281282820">328 128 2820</a>
+    <a data-umami-event="instagram" href="https://www.instagram.com/befit_macerata/">@befit_macerata</a><br>
+    WhatsApp <a data-wa="Ciao, vorrei informazioni sul nuovo Be Fit" data-umami-event="whatsapp-info" href="https://wa.me/393281282820">328 128 2820</a>
   </footer>
 
 </div>
