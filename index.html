@@ -25,7 +25,7 @@
 
   4. Conteggio visite: Umami, come prima, stesso codice del sito.
      In Umami, sezione Eventi: "iscrizione" conta solo gli invii
-     riusciti (con il cartellone di provenienza); gli altri pulsanti
+     riusciti; gli altri pulsanti
      con data-umami-event contano i clic su WhatsApp e Instagram.
   ============================================================
 -->
@@ -203,7 +203,7 @@
   <section class="box">
     <h2>Vantaggi dei Fondatori</h2>
     <ul class="vantaggi">
-      <li><b>Prezzo bloccato</b> per sei mesi</li>
+      <li><b>Prezzo bloccato</b> per un anno</li>
       <li><b>Scelta prioritaria </b> degli orari, prima dell'apertura al pubblico</li>
       <li><b>Monitoraggio dei progressi</b> ogni 3 mesi</li>
       <li><b>Prova gratuita</b> prima dell’inaugurazione</li>
@@ -255,6 +255,7 @@
       <li><div><b>Il trainer ti segue in tutto</b><span> Indica gli esercizi e sceglie intensità zona per zona e tipo di impulso in base agli obiettivi.</span></div></li>
       <li><div><b>Ti alleni in 20 minuti</b><span> Esercizi mirati, una persona alla volta, una o due volte a settimana.</span></div></li>
     </ol>
+    <p class="avviso">Prima di iniziare facciamo un colloquio: in gravidanza, con pacemaker e in alcune altre condizioni l'EMS non si usa.</p>
   </section>
 
   <section class="domanda scura" id="hydrobike">
@@ -270,7 +271,7 @@
 
   <section class="oggi">
     <h2>Intanto siamo già qui</h2>
-    <p>Fino al trasloco lo studio di Corso Cairoli 40 resta aperto: puoi già allenarti con il personal trainer, e seguire un percorso di alimentazione personalizzata. Oppure passa a trovarci per conoscerci e chiedere informazioni!</p>
+    <p>Fino al trasloco lo studio di Corso Cairoli 40 resta aperto: puoi già allenarti con il personal trainer, e seguire un percorso di alimentazione personalizzata.</p>
   </section>
 
   <footer>
@@ -326,11 +327,9 @@ var IMPOSTAZIONI = {
   var buoni = oggi >= giorno(IMPOSTAZIONI.buoniDal) && oggi <= finoA(IMPOSTAZIONI.buoniAl);
   document.querySelectorAll('[data-buoni]').forEach(function(el){ el.hidden = !buoni; });
 
-  // Da quale cartellone arriva la persona (es. ?utm_content=d1): lo aggiungiamo al messaggio WhatsApp
-  var cartellone = new URLSearchParams(location.search).get('utm_content');
-  var firma = cartellone ? ' (cartellone ' + cartellone.toUpperCase() + ')' : '';
+  // Pulsanti WhatsApp con il messaggio già scritto
   document.querySelectorAll('a[data-wa]').forEach(function(a){
-    a.href = 'https://wa.me/' + IMPOSTAZIONI.whatsapp + '?text=' + encodeURIComponent(a.getAttribute('data-wa') + firma);
+    a.href = 'https://wa.me/' + IMPOSTAZIONI.whatsapp + '?text=' + encodeURIComponent(a.getAttribute('data-wa'));
   });
 
   // Modulo: invia i dati direttamente al modulo Google
@@ -366,7 +365,7 @@ var IMPOSTAZIONI = {
       .then(function(){
         form.hidden = true;
         esito.hidden = false;
-        if (window.umami) { umami.track('iscrizione', { cartellone: cartellone || 'diretto' }); }
+        if (window.umami) { umami.track('iscrizione'); }
       })
       .catch(function(){
         pulsante.disabled = false;
